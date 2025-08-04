@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className={styles.infoContent}>
                   <h3>Location</h3>
-                  <p>São Paulo, Brazil</p>
+                  <p>Bahia, Brazil</p>
                 </div>
               </div>
               
@@ -82,8 +82,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div className={styles.infoContent}>
                   <h3>Email</h3>
-                  <a href="mailto:filipe.santiago@example.com">
-                    filipe.santiago@example.com
+                  <a href="mailto:filipecacule@gmail.com">
+                    filipecacule@gmail.com
                   </a>
                 </div>
               </div>
@@ -94,8 +94,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div className={styles.infoContent}>
                   <h3>Phone</h3>
-                  <a href="tel:+5511XXXXXXXXX">
-                    +55 11 XXXX-XXXX
+                  <a href="https://wa.me/5577981356658" target="_blank" rel="noopener noreferrer">
+                    +55 77 981356658
                   </a>
                 </div>
               </div>
@@ -151,6 +151,7 @@ const Contact: React.FC = () => {
                   type="text"
                   id="name"
                   name="name"
+                  placeholder='Jhon doe'
                   value={formData.name}
                   onChange={handleChange}
                   className={styles.input}
@@ -163,6 +164,7 @@ const Contact: React.FC = () => {
                 </label>
                 <input
                   type="email"
+                  placeholder='example@email.com'
                   id="email"
                   name="email"
                   value={formData.email}
@@ -180,6 +182,7 @@ const Contact: React.FC = () => {
               <input
                 type="text"
                 id="subject"
+                placeholder='Subject of your message'
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
@@ -194,6 +197,7 @@ const Contact: React.FC = () => {
               </label>
               <textarea
                 id="message"
+                placeholder='Write your message here...'
                 name="message"
                 value={formData.message}
                 onChange={handleChange}

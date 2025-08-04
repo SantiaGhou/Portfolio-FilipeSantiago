@@ -37,10 +37,10 @@ const About: React.FC = () => {
   ];
 
   const stats = [
-    { value: '2+', label: 'Years Experience' },
+    { value: '3+', label: 'Years Experience' },
     { value: '15+', label: 'Projects Completed' },
     { value: '10+', label: 'Technologies' },
-    { value: '5+', label: 'Satisfied Clients' }
+    { value: '7+', label: 'Satisfied Clients' }
   ];
 
   const tags = ['Problem Solving', 'Clean Code', 'User Experience', 'Continuous Learning'];
