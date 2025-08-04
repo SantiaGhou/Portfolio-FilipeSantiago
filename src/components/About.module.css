@@ -1,0 +1,265 @@
+.about {
+  padding: var(--spacing-4xl) 0;
+  background: 
+    linear-gradient(180deg, var(--background-primary) 0%, var(--background-secondary) 50%, var(--background-primary) 100%);
+  position: relative;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: sectionFlow 25s ease-in-out infinite;
+}
+
+@keyframes sectionFlow {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(20px);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.header {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-3xl);
+  text-align: center;
+}
+
+.title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--content-primary);
+}
+
+.separator {
+  height: 3px;
+  width: 5rem;
+  background: var(--gradient-primary);
+  margin: 0 auto var(--spacing-xl);
+  border-radius: var(--radius-sm);
+}
+
+.description {
+  font-size: var(--font-size-lg);
+  color: var(--content-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-4xl);
+}
+
+.serviceCard {
+  padding: var(--spacing-xl);
+  background-color: var(--background-primary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-primary);
+  transition: all var(--transition-normal);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.serviceCard:hover::before {
+  transform: scaleX(1);
+}
+
+.serviceCard:hover {
+  border-color: var(--border-brand);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-brand);
+}
+
+.iconWrapper {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: rgba(139, 92, 246, 0.1);
+  border-radius: var(--radius-xl);
+  display: inline-block;
+  transition: all var(--transition-normal);
+}
+
+.serviceCard:hover .iconWrapper {
+  background-color: rgba(139, 92, 246, 0.2);
+  transform: scale(1.1);
+}
+
+.serviceTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-md);
+  color: var(--content-primary);
+}
+
+.serviceDescription {
+  color: var(--content-secondary);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+}
+
+.journeySection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.journeyContent {
+  
+}
+
+.journeyTitle {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--content-primary);
+}
+
+.journeyText {
+  color: var(--content-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.tag {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(139, 92, 246, 0.1);
+  color: var(--content-brand);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  transition: all var(--transition-normal);
+}
+
+.tag:hover {
+  background-color: var(--content-brand);
+  color: var(--color-inverse);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.statCard {
+  padding: var(--spacing-lg);
+  background-color: var(--background-primary);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  border: 1px solid var(--border-primary);
+  transition: all var(--transition-normal);
+}
+
+.statCard:hover {
+  border-color: var(--border-brand);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.statValue {
+  display: block;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--content-brand);
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-tight);
+}
+
+.statLabel {
+  color: var(--content-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .journeySection {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about {
+    padding: var(--spacing-3xl) 0;
+  }
+  
+  .journeyTitle {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .serviceCard {
+    padding: var(--spacing-lg);
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .statValue {
+    font-size: var(--font-size-3xl);
+  }
+}
