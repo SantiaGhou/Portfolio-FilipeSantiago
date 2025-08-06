@@ -119,6 +119,7 @@
   opacity: 0.9;
   transform: translateY(-2px);
   box-shadow: var(--shadow-brand);
+  color: azure;
 }
 
 .buttonSecondary {
@@ -132,6 +133,7 @@
   border-color: transparent;
   transform: translateY(-2px);
   box-shadow: var(--shadow-brand);
+  color:azure;
 }
 
 .scrollIndicator {

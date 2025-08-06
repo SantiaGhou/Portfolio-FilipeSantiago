@@ -27,14 +27,14 @@ const Hero: React.FC = () => {
             </p>
             
             <h1 className={styles.title}>
-              Eai beleza 👋 me chamo{' '}
+              Hey, what’s up 👋 my name is{' '}
               <span className={styles.titleHighlight}>
                 Filipe Santiago
               </span>
             </h1>
             
             <p className={styles.description}>
-              Sou desenvolvedor em formação, apaixonado por tecnologia e focado em me tornar referência na área.
+              Developer in training, focused on technology and continuous improvement. Actively working to become a reference in the field through hands-on experience, project development, and mastery of modern tools.
             </p>
             
             <div className={styles.buttons}>

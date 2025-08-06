@@ -52,9 +52,9 @@ const About: React.FC = () => {
           <h2 className={styles.title}>About Me</h2>
           <div className={styles.separator}></div>
           <p className={styles.description}>
-            Sou desenvolvedor em formação, apaixonado por tecnologia e focado em me tornar referência na área. 
-            Atualmente, estou me aprofundando na Ciência da Computação, onde venho construindo uma base sólida 
-            em programação e resolução de problemas.
+          Developer in training with a focus on technology and technical excellence. 
+          Currently studying Computer Science, building a solid foundation in data structures, a
+          lgorithms, programming logic, and problem solving.
           </p>
         </div>
 

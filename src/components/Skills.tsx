@@ -23,43 +23,53 @@ const Skills: React.FC = () => {
   }, []);
 
   const skillCategories = [
-    {
-      title: 'Frontend Development',
-      skills: [
-        { name: 'HTML5 & CSS3', level: 95 },
-        { name: 'JavaScript (ES6+)', level: 90 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'React.js', level: 88 },
-        { name: 'Next.js', level: 82 },
-        { name: 'Tailwind CSS', level: 92 },
-        { name: 'Responsive Design', level: 90 },
-      ]
-    },
-    {
-      title: 'Backend Development',
-      skills: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Express.js', level: 82 },
-        { name: 'Python', level: 78 },
-        { name: 'Django/FastAPI', level: 75 },
-        { name: 'RESTful APIs', level: 88 },
-        { name: 'GraphQL', level: 72 },
-        { name: 'Microservices', level: 70 },
-      ]
-    },
-    {
-      title: 'Database & DevOps',
-      skills: [
-        { name: 'MongoDB', level: 80 },
-        { name: 'PostgreSQL', level: 78 },
-        { name: 'Redis', level: 70 },
-        { name: 'Docker', level: 75 },
-        { name: 'AWS/Cloud', level: 68 },
-        { name: 'Git & GitHub', level: 90 },
-        { name: 'CI/CD Pipelines', level: 65 },
-      ]
-    }
-  ];
+  {
+    title: 'Frontend Development',
+    skills: [
+      { name: 'HTML5 & CSS3', level: 95 },
+      { name: 'JavaScript (ES6+)', level: 90 },
+      { name: 'TypeScript', level: 88 },
+      { name: 'React.js', level: 90 },
+      { name: 'Next.js (App Router)', level: 87 },
+      { name: 'Tailwind CSS', level: 92 },
+      { name: 'ShadCN/UI', level: 80 },
+      { name: 'Responsive & Accessible Design', level: 90 },
+      { name: 'Framer Motion', level: 75 }
+    ]
+  },
+  {
+    title: 'Backend Development',
+    skills: [
+      { name: 'Node.js', level: 88 },
+      { name: 'NestJS', level: 82 },
+      { name: 'Express.js', level: 80 },
+      { name: 'Python', level: 80 },
+      { name: 'FastAPI', level: 78 },
+      { name: 'Java (Spring Boot)', level: 75 },
+      { name: 'RESTful APIs', level: 90 },
+      { name: 'GraphQL', level: 75 },
+      { name: 'JWT/Auth/Security', level: 82 },
+      { name: 'WebSockets & Realtime', level: 78 }
+    ]
+  },
+  {
+    title: 'Database & DevOps & Currently Exploring',
+    skills: [
+      { name: 'PostgreSQL', level: 85 },
+      { name: 'MongoDB', level: 82 },
+      { name: 'Redis', level: 75 },
+      { name: 'Prisma ORM', level: 78 },
+      { name: 'PlanetScale / Vercel Postgres', level: 70 },
+      { name: 'Docker', level: 80 },
+      { name: 'AWS (EC2, S3, RDS)', level: 75 },
+      { name: 'Git & GitHub', level: 92 },
+      { name: 'CI/CD (GitHub Actions)', level: 70 },
+      { name: 'LangChain / LLMs', level: 55 },
+    ]
+  },
+];
+
+
 
   return (
     <section id="skills" className={styles.skills}>
