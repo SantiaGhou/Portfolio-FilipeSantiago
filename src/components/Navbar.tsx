@@ -71,10 +71,10 @@ const Navbar: React.FC = () => {
             </ul>
 
             <div className={styles.actions}>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              <a href="https://github.com/SantiaGhou" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 <Github size={20} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              <a href="https://www.linkedin.com/in/filipe-santiago-0736932b2/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 <Linkedin size={20} />
               </a>
               <button 
