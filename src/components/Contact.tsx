@@ -105,7 +105,7 @@ const Contact: React.FC = () => {
               <h4 className={styles.socialTitle}>Connect with me</h4>
               <div className={styles.socialGrid}>
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/SantiaGhou" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className={styles.socialLink}
@@ -114,7 +114,7 @@ const Contact: React.FC = () => {
                   <Github size={20} />
                 </a>
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.linkedin.com/in/filipe-santiago-0736932b2/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className={styles.socialLink}
