@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 import { projects, Project } from '../data/projects';
+import { useLanguage } from '../context/LanguageContext';
 import styles from './Projects.module.css';
 
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'frontend' | 'backend' | 'fullstack'>('all');
+  const { t } = useLanguage();
   
   const filteredProjects = filter === 'all' 
     ? projects 
@@ -14,10 +16,9 @@ const Projects: React.FC = () => {
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Featured Projects</h2>
+          <h2 className={styles.title}>{t('projects.title')}</h2>
           <p className={styles.description}>
-            Explore my latest work showcasing modern web development practices, 
-            innovative solutions, and attention to detail in every project.
+            {t('projects.description')}
           </p>
           
           <div className={styles.filters}>
@@ -27,7 +28,7 @@ const Projects: React.FC = () => {
                 className={`${styles.filterButton} ${filter === category ? styles.filterButtonActive : ''}`}
                 onClick={() => setFilter(category as typeof filter)}
               >
-                {category === 'all' ? 'All Projects' : category.charAt(0).toUpperCase() + category.slice(1)}
+                {category === 'all' ? t('projects.all') : t(`projects.${category}`)}
               </button>
             ))}
           </div>

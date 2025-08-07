@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import styles from './Hero.module.css';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -23,18 +25,18 @@ const Hero: React.FC = () => {
         <div className={styles.content}>
           <div className={`${isVisible ? 'fade-in' : ''}`}>
             <p className={styles.badge}>
-              Fullstack Developer
+              {t('hero.badge')}
             </p>
             
             <h1 className={styles.title}>
-              Hey, what’s up 👋 my name is{' '}
+              {t('hero.title')}{' '}
               <span className={styles.titleHighlight}>
-                Filipe Santiago
+                {t('hero.name')}
               </span>
             </h1>
             
             <p className={styles.description}>
-              Developer in training, focused on technology and continuous improvement. Actively working to become a reference in the field through hands-on experience, project development, and mastery of modern tools.
+              {t('hero.description')}
             </p>
             
             <div className={styles.buttons}>
@@ -46,7 +48,7 @@ const Hero: React.FC = () => {
                   scrollToSection('#contact');
                 }}
               >
-                Get in touch
+                {t('hero.getInTouch')}
                 <ArrowRight size={18} className={styles.iconArrow} />
               </a>
               <a 
@@ -57,7 +59,7 @@ const Hero: React.FC = () => {
                   scrollToSection('#projects');
                 }}
               >
-                View my work
+                {t('hero.viewWork')}
               </a>
             </div>
           </div>

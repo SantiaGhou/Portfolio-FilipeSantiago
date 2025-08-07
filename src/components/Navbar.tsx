@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Github, Linkedin, Download } from 'lucide-react';
+import { Menu, X, Moon, Sun, Github, Linkedin, Download, Languages, ChevronDown } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
 import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showCVDropdown, setShowCVDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useLanguage();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleDownloadCV = () => {
+  const handleDownloadCV = (lang: 'pt' | 'en') => {
+    const fileName = lang === 'pt' ? 'curriculo-filipe-santiago.pdf' : 'cv-filipe-santiago-en.pdf';
+    const downloadName = lang === 'pt' ? 'Filipe_Santiago_Curriculo.pdf' : 'Filipe_Santiago_CV.pdf';
+    
     const link = document.createElement('a');
-    link.href = '/cv-filipe-santiago.pdf';
-    link.download = 'Filipe_Santiago_CV.pdf';
+    link.href = `/${fileName}`;
+    link.download = downloadName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setShowCVDropdown(false);
   };
 
   useEffect(() => {
@@ -29,11 +36,11 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('nav.home'), href: '#home' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.contact'), href: '#contact' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -77,13 +84,38 @@ const Navbar: React.FC = () => {
               <a href="https://www.linkedin.com/in/filipe-santiago-0736932b2/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 <Linkedin size={20} />
               </a>
-              <button 
-                onClick={handleDownloadCV}
-                className={styles.socialLink}
-                aria-label="Download CV"
-                title="Download CV"
-              >
-                <Download size={20} />
+              
+              <div className={styles.cvDropdown}>
+                <button 
+                  onClick={() => setShowCVDropdown(!showCVDropdown)}
+                  className={styles.socialLink}
+                  aria-label={t('nav.downloadCV')}
+                  title={t('nav.downloadCV')}
+                >
+                  <Download size={20} />
+                  <ChevronDown size={14} className={styles.chevron} />
+                </button>
+                {showCVDropdown && (
+                  <div className={styles.cvDropdownMenu}>
+                    <button 
+                      onClick={() => handleDownloadCV('pt')}
+                      className={styles.cvDropdownItem}
+                    >
+                      {t('nav.downloadCVPt')}
+                    </button>
+                    <button 
+                      onClick={() => handleDownloadCV('en')}
+                      className={styles.cvDropdownItem}
+                    >
+                      {t('nav.downloadCVEn')}
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <button onClick={toggleLanguage} className={styles.languageToggle} aria-label="Toggle language">
+                <Languages size={20} />
+                <span className={styles.languageText}>{language.toUpperCase()}</span>
               </button>
 
               <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
@@ -93,6 +125,10 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className={styles.mobileMenu}>
+            <button onClick={toggleLanguage} className={styles.languageToggle} aria-label="Toggle language">
+              <Languages size={20} />
+              <span className={styles.languageText}>{language.toUpperCase()}</span>
+            </button>
             <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -120,19 +156,38 @@ const Navbar: React.FC = () => {
             ))}
           </ul>
           <div className={styles.mobileSocial}>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+            <a href="https://github.com/SantiaGhou" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
               <Github size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+            <a href="https://www.linkedin.com/in/filipe-santiago-0736932b2/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
               <Linkedin size={20} />
             </a>
-            <button 
-              onClick={handleDownloadCV}
-              className={styles.socialLink}
-              aria-label="Download CV"
-            >
-              <Download size={20} />
-            </button>
+            <div className={styles.cvDropdown}>
+              <button 
+                onClick={() => setShowCVDropdown(!showCVDropdown)}
+                className={styles.socialLink}
+                aria-label={t('nav.downloadCV')}
+              >
+                <Download size={20} />
+                <ChevronDown size={14} className={styles.chevron} />
+              </button>
+              {showCVDropdown && (
+                <div className={styles.cvDropdownMenu}>
+                  <button 
+                    onClick={() => handleDownloadCV('pt')}
+                    className={styles.cvDropdownItem}
+                  >
+                    {t('nav.downloadCVPt')}
+                  </button>
+                  <button 
+                    onClick={() => handleDownloadCV('en')}
+                    className={styles.cvDropdownItem}
+                  >
+                    {t('nav.downloadCVEn')}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

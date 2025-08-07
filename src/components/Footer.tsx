@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowUp, Heart } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -16,10 +19,10 @@ const Footer: React.FC = () => {
         <div className={styles.content}>
           <div className={styles.textContent}>
             <p className={styles.copyright}>
-              © {new Date().getFullYear()} Filipe Santiago. All rights reserved.
+              © {new Date().getFullYear()} Filipe Santiago. {t('footer.copyright')}
             </p>
             <p className={styles.love}>
-              Made with <Heart className={styles.heart} size={14} /> and modern web technologies
+              {t('footer.made')} <Heart className={styles.heart} size={14} /> {t('footer.tech')}
             </p>
           </div>
           
