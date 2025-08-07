@@ -12,13 +12,53 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'teste',
-    description: 'teste',
-    image: 'https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe', 'Redux'],
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com',
+    title: 'Fitout',
+    description: 'Fitout é uma plataforma open-source para gerenciamento e acompanhamento de treinos, desenvolvida para atletas e personal trainers',
+    image: '../public/projects/fitout.jpeg',
+    tags: ['TypeScript', 'Node.js', 'Sqlite', 'Express', 'Python', 'FastAPI'],
+    githubUrl: 'https://github.com/SantiaGhou/Fitout',
+    liveUrl: 'https://github.com/SantiaGhou/Fitout',
     category: 'fullstack'
   },
-
+    {
+    id: 2,
+    title: 'Zaavy.Ia',
+    description: ' uma plataforma que permite que qualquer pessoa, mesmo sem saber programar, consiga criar chatbots integrados com i.a para WhatsApp de forma simples e eficiente.',
+    image: '../public/projects/Zaavy.jpeg',
+    tags: ['TypeScript', 'Node.js'],
+    githubUrl: 'https://github.com/SantiaGhou/Zaavy.Ia',
+    liveUrl: 'https://github.com/SantiaGhou/Zaavy.Ia',
+    category: 'fullstack'
+  },
+      {
+    id: 3,
+    title: 'Echohive',
+    description: 'EchoHive é um app que o usuario pode dar play em arquivos de audio e salva los em uma interface visual agradavel (foi meu primeiro projeto em equipe)',
+    image: '../public/projects/Echohive.jpg',
+    tags: ['Java', 'JavaFX', 'SQLite'],
+    githubUrl: 'https://github.com/VeiRL/Echohive',
+    liveUrl: 'https://github.com/VeiRL/Echohive',
+    category: 'fullstack'
+  },
+        {
+    id: 4,
+    title: 'T.H.O.R',
+    description: 'T.H.O.R. é um assistente de IA pessoal, local-first e modular, inspirado no J.A.R.V.I.S. Desenvolvido para rodar em sua própria máquina, ele utiliza múltiplos modelos de linguagem (LLMs) para diferentes tarefas, garantindo especialização e privacidade.',
+    image: '../public/projects/Thor.png',
+    tags: ['Python', 'FastAPI', 'Node.js','LLMS' ],
+    githubUrl: 'https://github.com/SantiaGhou/T.H.O.R',
+    liveUrl: 'https://github.com/SantiaGhou/T.H.O.R',
+    category: 'backend'
+  },
+          {
+    id: 5,
+    title: 'Coffe Delivery',
+    description: 'Coffe Delivery foi um projeto desenvolvido como pratica de conclusão do curso Ignite da Rocketseat, onde foi utilizado ReactJs, TypeScript e TailwindCSS para criar uma interface responsiva e funcional portanto não possuo mais o mesmo em meu github.',
+    image: '../public/projects/CoffeDelivery.png',
+    tags: ['ReactJs', 'TypeScript', 'TailwindCSS'],
+    githubUrl: '',
+    liveUrl: '',
+    category: 'frontend'
+  },
+  
 ];
