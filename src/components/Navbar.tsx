@@ -13,18 +13,23 @@ const Navbar: React.FC = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleDownloadCV = (lang: 'pt' | 'en') => {
-    const fileName = lang === 'pt' ? 'curriculo-filipe-santiago.pdf' : 'cv-filipe-santiago-en.pdf';
-    const downloadName = lang === 'pt' ? 'Filipe_Santiago_Curriculo.pdf' : 'Filipe_Santiago_CV.pdf';
-    
-    const link = document.createElement('a');
-    link.href = `/${fileName}`;
-    link.download = downloadName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setShowCVDropdown(false);
-  };
+const handleDownloadCV = (lang: 'pt' | 'en') => {
+  const fileName = lang === 'pt'
+    ? 'Curriculo_Filipe_Santiago_PtBr.pdf'
+    : 'CV_Filipe_Santiago_En.pdf'
+  const downloadName = lang === 'pt'
+    ? 'Curriculo_Filipe_Santiago_PtBr.pdf'
+    : 'CV_Filipe_Santiago_En.pdf'
+
+  const link = document.createElement('a')
+  link.href = `/${fileName}`
+  link.download = downloadName
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+  setShowCVDropdown(false)
+}
+
 
   useEffect(() => {
     const handleScroll = () => {
