@@ -60,5 +60,15 @@ export const projects: Project[] = [
     liveUrl: '',
     category: 'frontend'
   },
+            {
+    id: 6,
+    title: 'BE2B KIDS - Landing Page',
+    description: 'Projeto desenvolvido para anunciar o programa escola de campeões da empresa BE2B, o qual visa aprimorar habilidades de crianças e adolescentes com foco em empreendedorismo e inovação.',
+    image: '/projects/Be2B_Kids.png',
+    tags: ['ReactJs', 'TypeScript', 'TailwindCSS'],
+    githubUrl: '',
+    liveUrl: '',
+    category: 'frontend'
+  },
   
 ];
