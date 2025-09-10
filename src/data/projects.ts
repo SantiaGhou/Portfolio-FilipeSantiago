@@ -70,5 +70,15 @@ export const projects: Project[] = [
     liveUrl: '',
     category: 'frontend'
   },
+  { 
+    id: 7,
+    title: 'Fyinlitics - Gerador de DRES Automatizado',
+    description: 'Projeto Desenvolvido dentro da BE2B para empresarios gerarem gráficos e poderem visualizar suas DRES de forma mais intuitiva e pratica. ',
+    image: '/projects/fyinlitics.jpg',
+    tags: ['ReactJs', 'TypeScript', 'TailwindCSS','Node.js','Express','PostgreSQL'],
+    githubUrl: '',
+    liveUrl: '',
+    category: 'fullstack'
+  },
   
 ];
