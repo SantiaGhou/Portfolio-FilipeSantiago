@@ -40,7 +40,7 @@ const About: React.FC = () => {
   ];
 
   const stats = [
-    { value: '2+', label: t('about.stats.experience') },
+    { value: '4+', label: t('about.stats.experience') },
     { value: '15+', label: t('about.stats.projects') },
     { value: '10+', label: t('about.stats.technologies') },
     { value: '5+', label: t('about.stats.clients') }
