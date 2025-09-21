@@ -1,43 +1,39 @@
 .footer {
-  padding: var(--spacing-2xl) 0;
-  background-color: var(--background-tertiary);
+  padding: var(--space-3xl) 0;
+  background-color: var(--surface-secondary);
   border-top: 1px solid var(--border-primary);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--space-md);
 }
 
 .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--spacing-xl);
-}
-
-.textContent {
-  
+  gap: var(--space-xl);
 }
 
 .copyright {
-  color: var(--content-secondary);
+  color: var(--text-secondary);
   font-size: var(--font-size-sm);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--space-xs);
   font-weight: var(--font-weight-normal);
 }
 
 .love {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--content-secondary);
+  gap: var(--space-xs);
+  color: var(--text-secondary);
   font-size: var(--font-size-xs);
 }
 
 .heart {
-  color: var(--accent-red);
+  color: #ef4444;
   animation: heartbeat 2s ease-in-out infinite;
 }
 
@@ -60,10 +56,10 @@
 }
 
 .scrollTop {
-  padding: var(--spacing-md);
-  background-color: var(--background-secondary);
+  padding: var(--space-md);
+  background-color: var(--surface-tertiary);
   border-radius: var(--radius-full);
-  color: var(--content-primary);
+  color: var(--text-primary);
   transition: all var(--transition-normal);
   border: 2px solid var(--border-primary);
   cursor: pointer;
@@ -73,28 +69,27 @@
 }
 
 .scrollTop:hover {
-  background-color: var(--content-brand);
-  border-color: var(--border-brand);
-  color: var(--color-inverse);
+  background-color: var(--color-accent);
+  border-color: var(--border-accent);
+  color: var(--text-inverse);
   transform: translateY(-4px);
   box-shadow: var(--shadow-brand);
 }
 
-/* Responsive Design */
 @media (max-width: 640px) {
   .content {
     flex-direction: column;
     text-align: center;
-    gap: var(--spacing-lg);
+    gap: var(--space-lg);
   }
   
   .footer {
-    padding: var(--spacing-xl) 0;
+    padding: var(--space-2xl) 0;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--space-sm);
   }
 }

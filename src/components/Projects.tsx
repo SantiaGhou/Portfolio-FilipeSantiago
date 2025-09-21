@@ -88,14 +88,7 @@ const Projects: React.FC = () => {
               style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
               onMouseEnter={() => setHoveredCard(project.id)}
               onMouseLeave={() => setHoveredCard(null)}
-              onMouseMove={(e) => handleMouseMove(e, project.id)}
             >
-              {/* Glow Effect */}
-              <div className={styles.cardGlow}></div>
-              
-              {/* Border Gradient */}
-              <div className={styles.cardBorder}></div>
-              
               <div className={styles.imageContainer}>
                 <img 
                   src={project.image} 
@@ -105,29 +98,32 @@ const Projects: React.FC = () => {
                 />
                 
                 <div className={styles.imageOverlay}>
-                  <div className={styles.overlayPattern}></div>
                 </div>
 
                 <div className={styles.projectActions}>
                   <div className={styles.actionButtons}>
-                    <a 
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${styles.actionButton} ${styles.githubButton}`}
-                      aria-label="View source code"
-                    >
-                      <Github size={18} />
-                    </a>
-                    <a 
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${styles.actionButton} ${styles.liveButton}`}
-                      aria-label="View live demo"
-                    >
-                      <Eye size={18} />
-                    </a>
+                    {project.githubUrl && (
+                      <a 
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${styles.actionButton} ${styles.githubButton}`}
+                        aria-label="View source code"
+                      >
+                        <Github size={16} />
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a 
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${styles.actionButton} ${styles.liveButton}`}
+                        aria-label="View live demo"
+                      >
+                        <Eye size={16} />
+                      </a>
+                    )}
                   </div>
                   
                   <div className={styles.categoryBadge}>
@@ -140,15 +136,9 @@ const Projects: React.FC = () => {
                 <div className={styles.contentHeader}>
                   <h3 className={styles.projectTitle}>
                     {project.title}
-                    <ArrowUpRight size={20} className={styles.titleIcon} />
+                    <ArrowUpRight size={16} className={styles.titleIcon} />
                   </h3>
                   
-                  {project.year && (
-                    <div className={styles.projectMeta}>
-                      <Calendar size={14} />
-                      <span>{project.year}</span>
-                    </div>
-                  )}
                 </div>
                 
                 <p className={styles.projectDescription}>{project.description}</p>
@@ -158,37 +148,24 @@ const Projects: React.FC = () => {
                     <span 
                       key={tagIndex} 
                       className={styles.tag}
-                      style={{ '--tag-index': tagIndex } as React.CSSProperties}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-
-                {/* Progress Bar for Completion Status */}
-                {project.status && (
-                  <div className={styles.statusBar}>
-                    <div className={styles.statusLabel}>Status</div>
-                    <div className={styles.statusProgress}>
-                      <div 
-                        className={`${styles.statusFill} ${styles[`status${project.status}`]}`}
-                        style={{ '--progress': project.progress || 100 } as React.CSSProperties}
-                      ></div>
-                    </div>
-                  </div>
-                )}
               </div>
 
-              {/* Floating Action Button */}
-              <a 
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.floatingAction}
-                aria-label="Quick view"
-              >
-                <ExternalLink size={16} />
-              </a>
+              {project.liveUrl && (
+                <a 
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.floatingAction}
+                  aria-label="Quick view"
+                >
+                  <ExternalLink size={14} />
+                </a>
+              )}
             </div>
           ))}
         </div>

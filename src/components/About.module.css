@@ -1,9 +1,8 @@
 .about {
-  padding: var(--spacing-4xl) 0;
-  background: 
-    linear-gradient(180deg, var(--background-primary) 0%, var(--background-secondary) 50%, var(--background-primary) 100%);
+  padding: var(--space-6xl) 0;
+  background: var(--surface-primary);
   position: relative;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-slow);
 }
 
 .about::before {
@@ -14,11 +13,11 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 70% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
-  animation: sectionFlow 25s ease-in-out infinite;
+  animation: sectionFlow 30s ease-in-out infinite;
 }
 
 @keyframes sectionFlow {
@@ -35,46 +34,48 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--space-md);
+  position: relative;
+  z-index: 1;
 }
 
 .header {
   max-width: 800px;
-  margin: 0 auto var(--spacing-3xl);
+  margin: 0 auto var(--space-5xl);
   text-align: center;
 }
 
 .title {
   font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-lg);
-  color: var(--content-primary);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
 }
 
 .separator {
   height: 3px;
   width: 5rem;
   background: var(--gradient-primary);
-  margin: 0 auto var(--spacing-xl);
+  margin: 0 auto var(--space-xl);
   border-radius: var(--radius-sm);
 }
 
 .description {
   font-size: var(--font-size-lg);
-  color: var(--content-secondary);
+  color: var(--text-secondary);
   line-height: var(--line-height-relaxed);
 }
 
 .servicesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-4xl);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-6xl);
 }
 
 .serviceCard {
-  padding: var(--spacing-xl);
-  background-color: var(--background-primary);
+  padding: var(--space-2xl);
+  background-color: var(--surface-secondary);
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-primary);
   transition: all var(--transition-normal);
@@ -100,14 +101,14 @@
 }
 
 .serviceCard:hover {
-  border-color: var(--border-brand);
+  border-color: var(--border-accent);
   transform: translateY(-8px);
   box-shadow: var(--shadow-brand);
 }
 
 .iconWrapper {
-  margin-bottom: var(--spacing-lg);
-  padding: var(--spacing-md);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-lg);
   background-color: rgba(139, 92, 246, 0.1);
   border-radius: var(--radius-xl);
   display: inline-block;
@@ -121,13 +122,13 @@
 
 .serviceTitle {
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-md);
-  color: var(--content-primary);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
 }
 
 .serviceDescription {
-  color: var(--content-secondary);
+  color: var(--text-secondary);
   line-height: var(--line-height-relaxed);
   font-size: var(--font-size-base);
 }
@@ -135,24 +136,20 @@
 .journeySection {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
+  gap: var(--space-3xl);
   align-items: center;
-}
-
-.journeyContent {
-  
 }
 
 .journeyTitle {
   font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-lg);
-  color: var(--content-primary);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
 }
 
 .journeyText {
-  color: var(--content-secondary);
-  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
   line-height: var(--line-height-relaxed);
   font-size: var(--font-size-base);
 }
@@ -160,14 +157,14 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
 }
 
 .tag {
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--space-sm) var(--space-md);
   background-color: rgba(139, 92, 246, 0.1);
-  color: var(--content-brand);
+  color: var(--color-accent);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -176,8 +173,8 @@
 }
 
 .tag:hover {
-  background-color: var(--content-brand);
-  color: var(--color-inverse);
+  background-color: var(--color-accent);
+  color: var(--text-inverse);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -185,12 +182,12 @@
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .statCard {
-  padding: var(--spacing-lg);
-  background-color: var(--background-primary);
+  padding: var(--space-xl);
+  background-color: var(--surface-secondary);
   border-radius: var(--radius-xl);
   text-align: center;
   border: 1px solid var(--border-primary);
@@ -198,7 +195,7 @@
 }
 
 .statCard:hover {
-  border-color: var(--border-brand);
+  border-color: var(--border-accent);
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
@@ -206,19 +203,18 @@
 .statValue {
   display: block;
   font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--content-brand);
-  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-black);
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
   line-height: var(--line-height-tight);
 }
 
 .statLabel {
-  color: var(--content-secondary);
+  color: var(--text-secondary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .title {
     font-size: var(--font-size-3xl);
@@ -226,7 +222,7 @@
   
   .journeySection {
     grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
+    gap: var(--space-xl);
   }
   
   .servicesGrid {
@@ -234,7 +230,7 @@
   }
   
   .about {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--space-5xl) 0;
   }
   
   .journeyTitle {
@@ -244,7 +240,7 @@
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--space-sm);
   }
   
   .title {
@@ -252,7 +248,7 @@
   }
   
   .serviceCard {
-    padding: var(--spacing-lg);
+    padding: var(--space-lg);
   }
   
   .statsGrid {
