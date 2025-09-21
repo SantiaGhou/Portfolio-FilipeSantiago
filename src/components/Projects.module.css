@@ -1,18 +1,18 @@
-/* Modern Projects Section */
+/* Modern Projects Section - Enhanced 2025 Design */
 .projects {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --secondary-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  --glass-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  --neon-glow: rgba(99, 102, 241, 0.5);
   
   position: relative;
   padding: clamp(4rem, 8vw, 8rem) 0;
-  background: linear-gradient(180deg, var(--background-primary) 0%, var(--background-secondary) 100%);
+  background: linear-gradient(180deg, var(--background-primary) 0%, var(--background-secondary) 70%, rgba(99, 102, 241, 0.03) 100%);
   overflow: hidden;
   transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Background Elements */
 .backgroundElements {
   position: absolute;
   inset: 0;
@@ -24,27 +24,49 @@
 .gradientOrb2 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.6;
-  animation: float 20s ease-in-out infinite;
+  filter: blur(100px);
+  opacity: 0.4;
+  animation: pulseFloat 25s ease-in-out infinite;
 }
 
 .gradientOrb1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, transparent 70%);
-  top: 10%;
-  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--primary-gradient) 0%, transparent 70%);
+  top: 5%;
+  left: -15%;
   animation-delay: 0s;
 }
 
 .gradientOrb2 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(245, 87, 108, 0.3) 0%, transparent 70%);
-  bottom: 20%;
-  right: -5%;
-  animation-delay: 10s;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--secondary-gradient) 0%, transparent 70%);
+  bottom: 10%;
+  right: -10%;
+  animation-delay: 12s;
+}
+
+.particle1,
+.particle2 {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--neon-glow);
+  border-radius: 50%;
+  animation: particleFloat 15s linear infinite;
+}
+
+.particle1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.particle2 {
+  top: 60%;
+  right: 20%;
+  animation-delay: 5s;
 }
 
 .gridPattern {
@@ -54,24 +76,30 @@
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: gridMove 30s linear infinite;
+    linear-gradient(rgba(99, 102, 241, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: subtleShift 40s linear infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -30px) rotate(120deg); }
-  66% { transform: translate(-20px, 20px) rotate(240deg); }
+@keyframes pulseFloat {
+  0%, 100% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 0.4; }
+  50% { transform: scale(1.1) translate(20px, -20px) rotate(180deg); opacity: 0.6; }
 }
 
-@keyframes gridMove {
+@keyframes particleFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes subtleShift {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
+  100% { transform: translate(20px, 20px); }
 }
 
-/* Container and Layout */
+/* Container */
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -80,38 +108,45 @@
   z-index: 1;
 }
 
-/* Header Styles */
+/* Header */
 .header {
   text-align: center;
   margin-bottom: clamp(3rem, 6vw, 5rem);
-  animation: slideUp 1s ease-out;
+  animation: fadeInUp 1.2s ease-out;
 }
 
 .projects.visible .header {
-  animation: slideUp 1s ease-out 0.2s both;
+  animation: fadeInUp 1.2s ease-out 0.3s both;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.25rem;
   background: var(--glass-gradient);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50px;
   color: var(--content-primary);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: badgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  from { box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1); }
+  to { box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2); }
 }
 
 .title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
   margin-bottom: 1.5rem;
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .titleGradient {
@@ -119,119 +154,115 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: none;
 }
 
 .description {
   color: var(--content-secondary);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  opacity: 0.9;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.85;
 }
 
-/* Modern Filter Buttons */
+/* Filters */
 .filters {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin-bottom: 3rem;
   flex-wrap: wrap;
 }
 
 .filterButton {
   position: relative;
-  padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
+  padding: 0.75rem 1.75rem;
+  background: var(--glass-gradient);
+  backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
   color: var(--content-secondary);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.875rem;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: hidden;
 }
 
 .filterText {
   position: relative;
   z-index: 2;
-  transition: color 0.4s ease;
 }
 
-.filterGlow {
+.filterIndicator {
   position: absolute;
   inset: 0;
   background: var(--primary-gradient);
+  border-radius: 50px;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
   z-index: 1;
+  transform: scaleX(0);
+  transform-origin: left;
 }
 
 .filterButton:hover {
-  transform: translateY(-2px);
-  border-color: rgba(102, 126, 234, 0.3);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-}
-
-.filterButton:hover .filterGlow {
-  opacity: 0.1;
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
 }
 
 .filterButtonActive {
-  background: var(--primary-gradient);
-  border-color: rgba(102, 126, 234, 0.5);
   color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
 }
 
-.filterButtonActive .filterGlow {
+.filterButtonActive .filterIndicator {
   opacity: 1;
+  transform: scaleX(1);
 }
 
-/* Modern Grid Layout */
+/* Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: clamp(1.5rem, 3vw, 2rem);
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 5rem;
 }
 
-/* Enhanced Card Design */
+/* Cards */
 .card {
   position: relative;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
+  background: var(--glass-gradient);
+  backdrop-filter: blur(25px);
+  border-radius: 28px;
   overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: cardAppear 0.8s ease-out;
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: cardSlideIn 1s ease-out;
   animation-delay: var(--delay);
   animation-fill-mode: both;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .projects.visible .card {
-  animation: cardAppear 0.8s ease-out var(--delay) both;
+  animation: cardSlideIn 1s ease-out var(--delay) both;
 }
 
 .cardGlow {
   position: absolute;
-  inset: -2px;
+  inset: -4px;
   background: conic-gradient(from 0deg at var(--mouse-x, 50%) var(--mouse-y, 50%), 
     transparent 0deg, 
-    rgba(102, 126, 234, 0.3) 90deg, 
-    transparent 180deg, 
-    rgba(245, 87, 108, 0.3) 270deg, 
-    transparent 360deg);
-  border-radius: 24px;
+    var(--neon-glow) 120deg, 
+    transparent 240deg, 
+    var(--secondary-gradient) 360deg);
+  border-radius: 28px;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
   z-index: -1;
-  filter: blur(8px);
+  filter: blur(12px);
 }
 
 .card:hover .cardGlow {
@@ -240,12 +271,12 @@
 
 .cardBorder {
   position: absolute;
-  inset: 1px;
-  background: var(--glass-gradient);
-  border-radius: 23px;
+  inset: 2px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));
+  border-radius: 26px;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .card:hover .cardBorder {
@@ -253,29 +284,29 @@
 }
 
 .card:hover {
-  transform: translateY(-8px) rotateX(2deg);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  transform: translateY(-12px) rotateX(5deg) rotateY(2deg);
+  box-shadow: 0 35px 60px rgba(0, 0, 0, 0.2);
 }
 
-/* Enhanced Image Container */
+/* Image Container */
 .imageContainer {
   position: relative;
-  height: 240px;
+  height: 260px;
   overflow: hidden;
-  border-radius: 20px 20px 0 0;
+  border-radius: 24px 24px 0 0;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scale: 1.05;
 }
 
 .card:hover .image {
-  scale: 1.1;
-  filter: brightness(0.8) contrast(1.1);
+  scale: 1.15;
+  filter: brightness(0.85) contrast(1.15) saturate(1.1);
 }
 
 .imageOverlay {
@@ -284,37 +315,46 @@
   background: linear-gradient(
     135deg,
     transparent 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.85) 100%
   );
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .card:hover .imageOverlay {
   opacity: 1;
 }
 
+.overlayGradient {
+  position: absolute;
+  inset: 0;
+  background: var(--primary-gradient);
+  opacity: 0.1;
+}
+
 .overlayPattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
-  background-size: 20px 20px;
-  opacity: 0.3;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 2px, transparent 2px),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.4;
 }
 
-/* Modern Project Actions */
+/* Project Actions */
 .projectActions {
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(30px);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card:hover .projectActions {
@@ -324,58 +364,99 @@
 
 .actionButtons {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .actionButton {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
+  background: var(--glass-gradient);
+  backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  border-radius: 16px;
   color: white;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .actionButton:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
 
 .githubButton:hover {
-  background: rgba(36, 41, 46, 0.9);
-  border-color: rgba(88, 96, 105, 0.5);
+  background: rgba(24, 24, 27, 0.9);
+  border-color: rgba(88, 96, 105, 0.6);
 }
 
 .liveButton:hover {
-  background: var(--primary-gradient);
-  border-color: rgba(102, 126, 234, 0.5);
+  background: var(--secondary-gradient);
+  border-color: transparent;
+  box-shadow: 0 12px 25px rgba(6, 182, 212, 0.4);
+}
+
+.likeButton {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: var(--glass-gradient);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  color: var(--content-secondary);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  backdrop-filter: blur(25px);
+}
+
+.likeButton:hover,
+.liked {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+  border-color: transparent;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+
+.likeCount {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.liked .likeCount,
+.likeButton:hover .likeCount {
+  opacity: 1;
 }
 
 .categoryBadge {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.25rem;
   background: var(--accent-gradient);
-  border-radius: 20px;
+  border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .categoryText {
   color: white;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
-/* Enhanced Content Area */
+/* Content */
 .content {
-  padding: 2rem;
+  padding: 2.5rem;
   position: relative;
 }
 
@@ -383,30 +464,30 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .projectTitle {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
+  gap: 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 800;
   color: var(--content-primary);
   line-height: 1.3;
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .titleIcon {
   opacity: 0;
-  transform: translate(-8px, 8px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--content-brand);
+  transform: translateX(-10px) rotate(-90deg);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card:hover .titleIcon {
   opacity: 1;
-  transform: translate(0, 0);
+  transform: translateX(0) rotate(0deg);
 }
 
 .projectMeta {
@@ -414,49 +495,69 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--content-secondary);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   opacity: 0.8;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .projectDescription {
   color: var(--content-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
-/* Enhanced Tags */
+/* Tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .tag {
-  padding: 0.5rem 1rem;
-  background: rgba(102, 126, 234, 0.1);
-  border: 1px solid rgba(102, 126, 234, 0.2);
-  border-radius: 20px;
-  color: var(--content-brand);
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  animation: tagFloat 2s ease-in-out infinite;
-  animation-delay: calc(var(--tag-index) * 0.1s);
+  padding: 0.6rem 1.25rem;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 24px;
+  color: var(--content-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  animation: tagPulse 3s ease-in-out infinite;
+  animation-delay: var(--tag-delay);
+  position: relative;
+  overflow: hidden;
+}
+
+.tag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
 }
 
 .tag:hover {
-  background: var(--primary-gradient);
   color: white;
   border-color: transparent;
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
 }
 
-@keyframes tagFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
+.tag:hover::before {
+  opacity: 1;
+}
+
+@keyframes tagPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(99, 102, 241, 0); }
 }
 
 /* Status Bar */
@@ -464,110 +565,160 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .statusLabel {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--content-secondary);
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusIcon {
+  color: var(--accent-gradient);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .statusProgress {
   flex: 1;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
   overflow: hidden;
+  position: relative;
 }
 
 .statusFill {
   height: 100%;
   width: calc(var(--progress) * 1%);
-  border-radius: 2px;
-  transition: width 1s ease-out;
+  border-radius: 3px;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.statusFill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: progressShine 2s linear infinite;
+}
+
+@keyframes progressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .statusCompleted { background: var(--accent-gradient); }
 .statusInProgress { background: var(--secondary-gradient); }
 .statusPlanned { background: var(--primary-gradient); }
 
-/* Floating Action Button */
+/* Floating Action */
 .floatingAction {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 48px;
-  height: 48px;
+  top: 1.25rem;
+  right: 1.25rem;
   background: var(--primary-gradient);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   color: white;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
   opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.7) rotate(-180deg);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 10;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .card:hover .floatingAction {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) rotate(0deg);
 }
 
 .floatingAction:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
 }
 
-/* Stats Section */
+/* Stats */
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  margin-top: 4rem;
-  padding: 2rem;
+  margin-top: 5rem;
+  padding: 2.5rem;
   background: var(--glass-gradient);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  border-radius: 24px;
+  text-align: center;
 }
 
-.stat {
-  text-align: center;
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+}
+
+.statIcon {
+  padding: 0.75rem;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  color: white;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
 }
 
 .statNumber {
   display: block;
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 2.5rem;
+  font-weight: 900;
   background: var(--primary-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .statLabel {
   color: var(--content-secondary);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 /* Animations */
-@keyframes slideUp {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(60px);
   }
   to {
     opacity: 1;
@@ -575,25 +726,25 @@
   }
 }
 
-@keyframes cardAppear {
+@keyframes cardSlideIn {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(40px) scale(0.95) rotateX(-10deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotateX(0deg);
   }
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
   
   .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px) rotateX(3deg);
   }
 }
 
@@ -604,30 +755,34 @@
   
   .grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
   
   .content {
-    padding: 1.5rem;
+    padding: 2rem;
   }
   
   .filters {
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
   
   .filterButton {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.8rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
   }
   
   .stats {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: 1.5rem;
+    padding: 2rem;
   }
   
   .statNumber {
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+  
+  .imageContainer {
+    height: 220px;
   }
 }
 
@@ -641,33 +796,63 @@
   }
   
   .projectTitle {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
   
   .filters {
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
   }
   
   .filterButton {
-    width: 200px;
+    width: 100%;
+    max-width: 250px;
     justify-content: center;
+  }
+  
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .actionButtons {
+    gap: 0.5rem;
+  }
+  
+  .actionButton,
+  .likeButton {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .floatingAction {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
   }
 }
 
-/* Accessibility and Reduced Motion */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .card,
   .filterButton,
   .tag,
   .actionButton,
-  .floatingAction {
-    transition: none;
-  }
-  
+  .floatingAction,
   .gradientOrb1,
   .gradientOrb2,
-  .gridPattern {
+  .particle1,
+  .particle2,
+  .gridPattern,
+  .tag,
+  .statusIcon,
+  .statusFill::after {
+    transition: none;
     animation: none;
   }
   
@@ -675,23 +860,32 @@
   .projects.visible .card {
     animation: none;
   }
+  
+  .badge {
+    animation: none;
+  }
 }
 
-/* Focus States for Accessibility */
 .filterButton:focus,
 .actionButton:focus,
-.floatingAction:focus {
-  outline: 2px solid var(--content-brand);
-  outline-offset: 2px;
+.floatingAction:focus,
+.likeButton:focus {
+  outline: 3px solid var(--content-primary);
+  outline-offset: 3px;
+  border-radius: 8px;
 }
 
-/* High Contrast Mode Support */
+/* High Contrast */
 @media (prefers-contrast: high) {
   .card {
     border: 2px solid var(--content-primary);
   }
   
   .tag {
-    border: 2px solid var(--content-brand);
+    border: 2px solid var(--content-primary);
+  }
+  
+  .filterButton {
+    border: 2px solid var(--content-primary);
   }
 }

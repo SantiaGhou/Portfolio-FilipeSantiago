@@ -192,26 +192,6 @@ const Projects: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Stats Section */}
-        <div className={styles.stats}>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>{projects.length}</span>
-            <span className={styles.statLabel}>Total Projects</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>
-              {projects.filter(p => p.category === 'fullstack').length}
-            </span>
-            <span className={styles.statLabel}>Full Stack</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNumber}>
-              {new Set(projects.flatMap(p => p.tags)).size}
-            </span>
-            <span className={styles.statLabel}>Technologies</span>
-          </div>
-        </div>
       </div>
     </section>
   );
