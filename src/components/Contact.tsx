@@ -21,18 +21,25 @@ const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
- const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault()
-  const whatsappNumber = '5577981356658'
-  const text = `Nome: ${formData.name}
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const whatsappNumber = '5577981356658';
+    const text = `Nome: ${formData.name}
 Email: ${formData.email}
 Assunto: ${formData.subject}
-Mensagem: ${formData.message}`
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`
-  window.open(url, '_blank')
-  setFormData({ name: '', email: '', subject: '', message: '' })
-}
-
+Mensagem: ${formData.message}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(false);
+    setSubmitMessage(t('contact.form.sent') || 'Mensagem enviada!');
+    setSubmitStatus('success');
+    setTimeout(() => {
+      setSubmitMessage('');
+      setSubmitStatus(null);
+    }, 3000);
+  };
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
@@ -63,7 +70,7 @@ Mensagem: ${formData.message}`
                   <MapPin size={20} />
                 </div>
                 <div className={styles.infoContent}>
-                  <h3>{t('contact.location')}</h3>
+                  <h4>{t('contact.location')}</h4>
                   <p>Bahia, Brasil</p>
                 </div>
               </div>
@@ -73,8 +80,8 @@ Mensagem: ${formData.message}`
                   <Mail size={20} />
                 </div>
                 <div className={styles.infoContent}>
-                  <h3>{t('contact.email')}</h3>
-                  <a href="mailto:filipe.santiago@example.com">
+                  <h4>{t('contact.email')}</h4>
+                  <a href="mailto:filipecacule@gmail.com">
                     filipecacule@gmail.com
                   </a>
                 </div>
@@ -85,7 +92,7 @@ Mensagem: ${formData.message}`
                   <Phone size={20} />
                 </div>
                 <div className={styles.infoContent}>
-                  <h3>{t('contact.phone')}</h3>
+                  <h4>{t('contact.phone')}</h4>
                   <a href="https://api.whatsapp.com/send/?phone=5577981356658&text&type=phone_number&app_absent=0">
                     +55 77 98135-6658
                   </a>
@@ -147,6 +154,7 @@ Mensagem: ${formData.message}`
                   onChange={handleChange}
                   className={styles.input}
                   required
+                  placeholder="Seu nome completo"
                 />
               </div>
               <div className={styles.inputGroup}>
@@ -161,6 +169,7 @@ Mensagem: ${formData.message}`
                   onChange={handleChange}
                   className={styles.input}
                   required
+                  placeholder="seu@email.com"
                 />
               </div>
             </div>
@@ -177,6 +186,7 @@ Mensagem: ${formData.message}`
                 onChange={handleChange}
                 className={styles.input}
                 required
+                placeholder="Assunto da mensagem"
               />
             </div>
             
@@ -191,6 +201,7 @@ Mensagem: ${formData.message}`
                 onChange={handleChange}
                 className={styles.textarea}
                 required
+                placeholder="Sua mensagem aqui..."
               />
             </div>
             
