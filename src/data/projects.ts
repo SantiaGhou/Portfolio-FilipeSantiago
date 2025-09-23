@@ -110,6 +110,17 @@ export const projects: Project[] = [
     liveUrl: '',
     category: 'frontend'
   },
-  
+      { 
+    id: 10,
+    title: 'NUMBERS - Sorteador de Números',
+    description: 'Projeto desenvolvido como parte da formação Fullstack Da Rocketseat, onde foi criado um sorteador de números randomicos!',
+    data: '2024',
+    image: '/projects/Numbers.png',
+    tags: ['HTML','CSS','JavaScript'],
+    githubUrl: '',
+    liveUrl: '',
+    category: 'frontend'
+  },
+
   
 ];
