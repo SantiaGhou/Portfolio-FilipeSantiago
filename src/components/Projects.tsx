@@ -163,7 +163,9 @@ const Projects: React.FC = () => {
                   <h3 className={styles.projectTitle}>{project.title}</h3>
                   <div className={styles.projectMeta}>
                     <Calendar size={14} />
-                    <span>2024</span>
+                      <span>
+                       {project.data}
+                      </span>
                   </div>
                 </div>
                 
