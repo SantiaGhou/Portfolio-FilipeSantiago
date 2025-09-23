@@ -120,6 +120,16 @@ export const projects: Project[] = [
     githubUrl: '',
     liveUrl: '',
     category: 'frontend'
+  },      { 
+    id: 11,
+    title: 'Habits - habit Dayly Tracker',
+    description: 'Projeto desenvolvido como parte do nlw Da Rocketseat, onde foi criado um rastreador de hábitos e resolvi ir alem adicionando uma analise de evolução com I.a Que analiza os habitos e retorna um feedback de como melhorar o desempenho de habitos não concluidos',
+    data: '2024',
+    image: '/projects/habits.png',
+    tags: ['Typescript','React','TailwindCSS','Css Modules'],
+    githubUrl: '',
+    liveUrl: '',
+    category: 'fullstack'
   },
 
   
