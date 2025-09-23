@@ -99,5 +99,17 @@ export const projects: Project[] = [
     liveUrl: '',
     category: 'backend'
   },
+    { 
+    id: 9,
+    title: 'Snitap - LP página De Vendas Patíns',
+    description: 'Projeto desenvolvido como parte da formação Fullstack Da Rocketseat, onde foi criado uma landing page para vendas de patíns!',
+    data: '2024',
+    image: '/projects/SnitapPatins.png',
+    tags: ['HTML','CSS','JavaScript'],
+    githubUrl: '',
+    liveUrl: '',
+    category: 'frontend'
+  },
+  
   
 ];
