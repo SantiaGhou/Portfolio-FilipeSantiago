@@ -1,37 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Code, Database, Globe, Smartphone, Server, Wrench } from 'lucide-react';
+import { 
+  Code, 
+  Server, 
+  Users, 
+  ChevronRight, 
+  X, 
+  ArrowRight,
+  Layers,
+  Crown,
+  MessageCircle,
+  Handshake,
+  Puzzle,
+  Brain,
+  RotateCcw,
+  Clock,
+  Palette,
+  GraduationCap,
+  Mic,
+  Target,
+  Lightbulb,
+  Heart,
+  UserCheck,
+  Zap
+} from 'lucide-react';
 import styles from './Skills.module.css';
 
-interface SkillWithIcon {
+interface Skill {
   name: string;
-  icon: string;
+  level: 'Iniciante' | 'Intermediário' | 'Avançado';
+  icon?: React.ReactNode;
+  color?: string;
+  logo: string;
+}
+
+interface SkillCategory {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
   color: string;
-  url: string;
-  category: string;
-  level: number;
+  gradient: string;
+  mainSkills: Skill[];
+  allSkills: Skill[];
 }
 
 const Skills: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [showAllSkills, setShowAllSkills] = useState<string | null>(null);
   const { t } = useLanguage();
 
   useEffect(() => {
-    const detectTheme = () => {
-      const skillsElement = document.getElementById('skills');
-      const theme = skillsElement?.getAttribute('data-theme') || 
-                   document.documentElement.getAttribute('data-theme') ||
-                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      setIsDarkTheme(theme === 'dark');
-    };
-
-    detectTheme();
-
-    const observer = new MutationObserver(detectTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -47,250 +67,284 @@ const Skills: React.FC = () => {
     }
 
     return () => {
-      observer.disconnect();
       intersectionObserver.disconnect();
     };
   }, []);
 
-  const needsInversion = (iconName: string) => {
-    const darkIcons = ['nextjs', 'express', 'github', 'vercel', 'markdown'];
-    return darkIcons.includes(iconName);
-  };
-
-  const getIconFilter = (iconName: string) => {
-    if (needsInversion(iconName)) {
-      return isDarkTheme ? 'brightness(0) invert(1)' : 'none';
+  const skillCategories: SkillCategory[] = [
+    {
+      id: 'frontend',
+      title: t('skills.frontend.title'),
+      description: t('skills.frontend.description'),
+      icon: <Code size={24} />,
+      color: '#0452cfff',
+      gradient: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+      mainSkills: [
+        { name: 'React.js', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+        { name: 'TypeScript', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+        { name: 'Next.js', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+        { name: 'Vue.js', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' }
+      ],
+      allSkills: [
+        { name: 'HTML5', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+        { name: 'CSS3', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+        { name: 'JavaScript', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+        { name: 'TypeScript', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+        { name: 'React.js', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+        { name: 'Next.js', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+        { name: 'Vue.js', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+        { name: 'Tailwind CSS', level: 'Avançado', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/512px-Tailwind_CSS_Logo.svg.png?20230715030042' },
+        { name: 'Sass/SCSS', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
+        { name: 'Bootstrap', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+        { name: 'Material-UI', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg' },
+        { name: 'Styled Components', level: 'Intermediário', logo: 'https://styled-components.com/logo.png' }
+      ]
+    },
+    {
+      id: 'backend',
+      title: t('skills.backend.title'),
+      description: t('skills.backend.description'),
+      icon: <Server size={24} />,
+      color: '#10b964ff',
+      gradient: 'linear-gradient(135deg, #10b981 0%, #047857 100%)',
+      mainSkills: [
+        { name: 'Python', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+        { name: 'Node.js', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+        { name: 'FastAPI', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+        { name: 'PostgreSQL', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' }
+      ],
+      allSkills: [
+        { name: 'Node.js', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+        { name: 'Express.js', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+        { name: 'Python', level: 'Avançado', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+        { name: 'Django', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
+        { name: 'FastAPI', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+        { name: 'Java', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+        { name: 'Spring Boot', level: 'Iniciante', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+        { name: 'PHP', level: 'Iniciante', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+        { name: 'Laravel', level: 'Iniciante', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/50px-Laravel.svg.png?20190820171151' },
+        { name: 'GraphQL', level: 'Iniciante', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
+        { name: 'PostgreSQL', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+        { name: 'MySQL', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+        { name: 'MongoDB', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+        { name: 'Redis', level: 'Iniciante', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+        { name: 'C#', level: 'Iniciante', logo: 'https://cdn.worldvectorlogo.com/logos/c--4.svg' },
+        { name: 'C++', level: 'Iniciante', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/306px-ISO_C%2B%2B_Logo.svg.png?20170928190710' },
+        { name: 'Docker', level: 'Intermediário', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' }
+      ]
+    },
+    {
+      id: 'softskills',
+      title: t('skills.softskills.title'),
+      description: t('skills.softskills.description'),
+      icon: <Users size={24} />,
+      color: '#8b5cf6',
+      gradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+      mainSkills: [
+        { name: t('skills.softskill.lideranca'), level: t('skills.level.avancado'), logo: 'Crown' },
+        { name: t('skills.softskill.comunicacao'), level: t('skills.level.avancado'), logo: 'MessageCircle' },
+        { name: t('skills.softskill.trabalhoEquipe'), level: t('skills.level.avancado'), logo: 'Handshake' },
+        { name: t('skills.softskill.resolucaoProblemas'), level: t('skills.level.avancado'), logo: 'Puzzle' }
+      ],
+      allSkills: [
+        { name: t('skills.softskill.lideranca'), level: t('skills.level.avancado'), logo: 'Crown' },
+        { name: t('skills.softskill.comunicacao'), level: t('skills.level.avancado'), logo: 'MessageCircle' },
+        { name: t('skills.softskill.trabalhoEquipe'), level: t('skills.level.avancado'), logo: 'Handshake' },
+        { name: t('skills.softskill.resolucaoProblemas'), level: t('skills.level.avancado'), logo: 'Puzzle' },
+        { name: t('skills.softskill.pensamentoCritico'), level: t('skills.level.avancado'), logo: 'Brain' },
+        { name: t('skills.softskill.adaptabilidade'), level: t('skills.level.avancado'), logo: 'RotateCcw' },
+        { name: t('skills.softskill.gestaoTempo'), level: t('skills.level.intermediario'), logo: 'Clock' },
+        { name: t('skills.softskill.criatividade'), level: t('skills.level.avancado'), logo: 'Palette' },
+        { name: t('skills.softskill.empatia'), level: t('skills.level.avancado'), logo: 'Heart' },
+        { name: t('skills.softskill.negociacao'), level: t('skills.level.intermediario'), logo: 'UserCheck' },
+        { name: t('skills.softskill.mentoria'), level: t('skills.level.intermediario'), logo: 'GraduationCap' },
+        { name: t('skills.softskill.apresentacao'), level: t('skills.level.avancado'), logo: 'Mic' }
+      ]
     }
-    return 'none';
-  };
-
-  const getIconUrl = (iconName: string): string => {
-    const iconMap: { [key: string]: string } = {
-      'html5': 'html5/html5-original.svg',
-      'css3': 'css3/css3-original.svg',
-      'javascript': 'javascript/javascript-original.svg',
-      'typescript': 'typescript/typescript-original.svg',
-      'react': 'react/react-original.svg',
-      'nextjs': 'nextjs/nextjs-original-wordmark.svg',
-      'vuejs': 'vuejs/vuejs-original.svg',
-      'tailwindcss': 'tailwindcss/tailwindcss-original.svg',
-      'sass': 'sass/sass-original.svg',
-      'bootstrap': 'bootstrap/bootstrap-original.svg',
-      'materialui': 'materialui/materialui-original.svg',
-      'nodejs': 'nodejs/nodejs-original.svg',
-      'express': 'express/express-original.svg',
-      'python': 'python/python-original.svg',
-      'django': 'django/django-plain.svg',
-      'fastapi': 'fastapi/fastapi-original.svg',
-      'java': 'java/java-original.svg',
-      'spring': 'spring/spring-original.svg',
-      'php': 'php/php-original.svg',
-      'laravel': 'laravel/laravel-original.svg',
-      'graphql': 'graphql/graphql-plain.svg',
-      'postgresql': 'postgresql/postgresql-original.svg',
-      'mysql': 'mysql/mysql-original.svg',
-      'mongodb': 'mongodb/mongodb-original.svg',
-      'redis': 'redis/redis-original.svg',
-      'firebase': 'firebase/firebase-plain.svg',
-      'sqlite': 'sqlite/sqlite-original.svg',
-      'supabase': 'supabase/supabase-original.svg',
-      'prisma': 'prisma/prisma-original.svg',
-      'docker': 'docker/docker-original.svg',
-      'git': 'git/git-original.svg',
-      'github': 'github/github-original.svg',
-      'vscode': 'vscode/vscode-original.svg',
-      'figma': 'figma/figma-original.svg',
-      'postman': 'postman/postman-original.svg',
-      'webpack': 'webpack/webpack-original.svg',
-      'vite': 'vite/vite-original.svg',
-      'eslint': 'eslint/eslint-original.svg',
-      'jest': 'jest/jest-plain.svg',
-      'vercel': 'vercel/vercel-original.svg',
-      'netlify': 'netlify/netlify-original.svg',
-      'amazonwebservices': 'amazonwebservices/amazonwebservices-original-wordmark.svg',
-      'reactnative': 'react/react-original.svg',
-      'flutter': 'flutter/flutter-original.svg',
-      'expo': 'expo/expo-original.svg',
-      'ionic': 'ionic/ionic-original.svg',
-    };
-    
-    // Ícones especiais que usam URLs alternativas
-    const specialIcons: { [key: string]: string } = {
-      'prettier': 'https://prettier.io/icon.png',
-      'cypress': 'https://asset.brandfetch.io/idIq_kF0rb/idv3zwmSiY.jpeg',
-      'styledcomponents': 'https://styled-components.com/logo.png',
-      'laravel': 'https://laravel.com/img/logomark.min.svg'
-    };
-    
-    // Verificar se é um ícone especial primeiro
-    if (specialIcons[iconName]) {
-      return specialIcons[iconName];
-    }
-    
-    const iconPath = iconMap[iconName];
-    if (!iconPath) {
-      return '';
-    }
-    
-    return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${iconPath}`;
-  };
-
-  const skillsWithIcons: SkillWithIcon[] = [
-    // Frontend
-    { name: 'HTML5', icon: 'html5', color: '#E34F26', url: 'https://developer.mozilla.org/docs/Web/HTML', category: 'frontend', level: 90 },
-    { name: 'CSS3', icon: 'css3', color: '#1572B6', url: 'https://developer.mozilla.org/docs/Web/CSS', category: 'frontend', level: 85 },
-    { name: 'JavaScript', icon: 'javascript', color: '#F7DF1E', url: 'https://developer.mozilla.org/docs/Web/JavaScript', category: 'frontend', level: 88 },
-    { name: 'TypeScript', icon: 'typescript', color: '#3178C6', url: 'https://www.typescriptlang.org', category: 'frontend', level: 82 },
-    { name: 'React.js', icon: 'react', color: '#61DAFB', url: 'https://react.dev', category: 'frontend', level: 85 },
-    { name: 'Next.js', icon: 'nextjs', color: '#000000', url: 'https://nextjs.org', category: 'frontend', level: 75 },
-    { name: 'Vue.js', icon: 'vuejs', color: '#4FC08D', url: 'https://vuejs.org', category: 'frontend', level: 70 },
-    { name: 'Tailwind CSS', icon: 'tailwindcss', color: '#06B6D4', url: 'https://tailwindcss.com', category: 'frontend', level: 80 },
-    { name: 'Sass/SCSS', icon: 'sass', color: '#CC6699', url: 'https://sass-lang.com', category: 'frontend', level: 75 },
-    { name: 'Bootstrap', icon: 'bootstrap', color: '#7952B3', url: 'https://getbootstrap.com', category: 'frontend', level: 78 },
-    { name: 'Material-UI', icon: 'materialui', color: '#0081CB', url: 'https://mui.com', category: 'frontend', level: 72 },
-    { name: 'Styled Components', icon: 'styledcomponents', color: '#DB7093', url: 'https://styled-components.com', category: 'frontend', level: 70 },
-    
-    // Backend
-    { name: 'Node.js', icon: 'nodejs', color: '#339933', url: 'https://nodejs.org', category: 'backend', level: 80 },
-    { name: 'Express.js', icon: 'express', color: '#000000', url: 'https://expressjs.com', category: 'backend', level: 78 },
-    { name: 'Python', icon: 'python', color: '#3776AB', url: 'https://www.python.org', category: 'backend', level: 85 },
-    { name: 'Django', icon: 'django', color: '#092E20', url: 'https://www.djangoproject.com', category: 'backend', level: 70 },
-    { name: 'FastAPI', icon: 'fastapi', color: '#009688', url: 'https://fastapi.tiangolo.com', category: 'backend', level: 75 },
-    { name: 'Java', icon: 'java', color: '#007396', url: 'https://www.oracle.com/java', category: 'backend', level: 72 },
-    { name: 'Spring Boot', icon: 'spring', color: '#6DB33F', url: 'https://spring.io/projects/spring-boot', category: 'backend', level: 68 },
-    { name: 'PHP', icon: 'php', color: '#777BB4', url: 'https://www.php.net', category: 'backend', level: 65 },
-    { name: 'Laravel', icon: 'laravel', color: '#FF2D20', url: 'https://laravel.com', category: 'backend', level: 62 },
-    { name: 'GraphQL', icon: 'graphql', color: '#E10098', url: 'https://graphql.org', category: 'backend', level: 60 },
-    
-    // Database
-    { name: 'PostgreSQL', icon: 'postgresql', color: '#336791', url: 'https://www.postgresql.org', category: 'database', level: 75 },
-    { name: 'MySQL', icon: 'mysql', color: '#4479A1', url: 'https://www.mysql.com', category: 'database', level: 70 },
-    { name: 'MongoDB', icon: 'mongodb', color: '#47A248', url: 'https://www.mongodb.com', category: 'database', level: 68 },
-    { name: 'Redis', icon: 'redis', color: '#DC382D', url: 'https://redis.io', category: 'database', level: 65 },
-    { name: 'Firebase', icon: 'firebase', color: '#FFCA28', url: 'https://firebase.google.com', category: 'database', level: 70 },
-    { name: 'SQLite', icon: 'sqlite', color: '#003B57', url: 'https://www.sqlite.org', category: 'database', level: 75 },
-    { name: 'Supabase', icon: 'supabase', color: '#3ECF8E', url: 'https://supabase.com', category: 'database', level: 68 },
-    { name: 'Prisma', icon: 'prisma', color: '#2D3748', url: 'https://www.prisma.io', category: 'database', level: 65 },
-    
-    // Tools
-    { name: 'Docker', icon: 'docker', color: '#2496ED', url: 'https://www.docker.com', category: 'tools', level: 70 },
-    { name: 'Git', icon: 'git', color: '#F05032', url: 'https://git-scm.com', category: 'tools', level: 85 },
-    { name: 'GitHub', icon: 'github', color: '#181717', url: 'https://github.com', category: 'tools', level: 80 },
-    { name: 'VS Code', icon: 'vscode', color: '#007ACC', url: 'https://code.visualstudio.com', category: 'tools', level: 90 },
-    { name: 'Figma', icon: 'figma', color: '#F24E1E', url: 'https://www.figma.com', category: 'tools', level: 75 },
-    { name: 'Postman', icon: 'postman', color: '#FF6C37', url: 'https://www.postman.com', category: 'tools', level: 80 },
-    { name: 'Webpack', icon: 'webpack', color: '#8DD6F9', url: 'https://webpack.js.org', category: 'tools', level: 65 },
-    { name: 'Vite', icon: 'vite', color: '#646CFF', url: 'https://vitejs.dev', category: 'tools', level: 78 },
-    { name: 'ESLint', icon: 'eslint', color: '#4B32C3', url: 'https://eslint.org', category: 'tools', level: 75 },
-    { name: 'Prettier', icon: 'prettier', color: '#F7B93E', url: 'https://prettier.io', category: 'tools', level: 80 },
-    { name: 'Jest', icon: 'jest', color: '#C21325', url: 'https://jestjs.io', category: 'tools', level: 70 },
-    { name: 'Cypress', icon: 'cypress', color: '#17202C', url: 'https://www.cypress.io', category: 'tools', level: 65 },
-    { name: 'Vercel', icon: 'vercel', color: '#000000', url: 'https://vercel.com', category: 'tools', level: 75 },
-    { name: 'Netlify', icon: 'netlify', color: '#00C7B7', url: 'https://www.netlify.com', category: 'tools', level: 72 },
-    { name: 'AWS', icon: 'amazonwebservices', color: '#FF9900', url: 'https://aws.amazon.com', category: 'tools', level: 60 },
-    
-    // Mobile
-    { name: 'React Native', icon: 'reactnative', color: '#61DAFB', url: 'https://reactnative.dev', category: 'mobile', level: 65 },
-    { name: 'Flutter', icon: 'flutter', color: '#02569B', url: 'https://flutter.dev', category: 'mobile', level: 60 },
-    { name: 'Expo', icon: 'expo', color: '#000020', url: 'https://expo.dev', category: 'mobile', level: 62 },
-    { name: 'Ionic', icon: 'ionic', color: '#3880FF', url: 'https://ionicframework.com', category: 'mobile', level: 58 },
   ];
 
-  const categories = [
-    { id: 'all', name: 'Todas', icon: <Globe size={18} /> },
-    { id: 'frontend', name: 'Frontend', icon: <Code size={18} /> },
-    { id: 'backend', name: 'Backend', icon: <Server size={18} /> },
-    { id: 'database', name: 'Database', icon: <Database size={18} /> },
-    { id: 'mobile', name: 'Mobile', icon: <Smartphone size={18} /> },
-    { id: 'tools', name: 'Tools', icon: <Wrench size={18} /> },
-  ];
+  const renderIcon = (iconName: string) => {
+    const iconProps = { size: 20, className: styles.skillIcon };
+    
+    switch (iconName) {
+      case 'Crown': return <Crown {...iconProps} />;
+      case 'MessageCircle': return <MessageCircle {...iconProps} />;
+      case 'Handshake': return <Handshake {...iconProps} />;
+      case 'Puzzle': return <Puzzle {...iconProps} />;
+      case 'Brain': return <Brain {...iconProps} />;
+      case 'RotateCcw': return <RotateCcw {...iconProps} />;
+      case 'Clock': return <Clock {...iconProps} />;
+      case 'Palette': return <Palette {...iconProps} />;
+      case 'Heart': return <Heart {...iconProps} />;
+      case 'UserCheck': return <UserCheck {...iconProps} />;
+      case 'GraduationCap': return <GraduationCap {...iconProps} />;
+      case 'Mic': return <Mic {...iconProps} />;
+      case 'Target': return <Target {...iconProps} />;
+      case 'Lightbulb': return <Lightbulb {...iconProps} />;
+      case 'Zap': return <Zap {...iconProps} />;
+      default: return <Code {...iconProps} />;
+    }
+  };
 
-  const filteredSkills = activeCategory === 'all' 
-    ? skillsWithIcons 
-    : skillsWithIcons.filter(skill => skill.category === activeCategory);
+  const handleCardClick = (categoryId: string) => {
+    if (expandedCard === categoryId) {
+      setExpandedCard(null);
+      setShowAllSkills(null);
+    } else {
+      setExpandedCard(categoryId);
+      setShowAllSkills(null);
+    }
+  };
 
-  const handleSkillClick = (url: string) => {
-    if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
+  const handleShowAllSkills = (categoryId: string) => {
+    setShowAllSkills(categoryId);
+  };
+
+  const handleCloseModal = () => {
+    setShowAllSkills(null);
+  };
+
+  const getBadgeClass = (level: string) => {
+    switch (level) {
+      case t('skills.level.iniciante'):
+        return styles.badgeIniciante;
+      case t('skills.level.intermediario'):
+        return styles.badgeIntermediario;
+      case t('skills.level.avancado'):
+        return styles.badgeAvancado;
+      default:
+        return styles.badgeIniciante;
     }
   };
 
   return (
-    <section id="skills" className={styles.skills} data-theme={isDarkTheme ? 'dark' : 'light'}>
+    <section id="skills" className={`${styles.skills} ${isVisible ? styles.visible : ''}`}>
       <div className={styles.container}>
-        <header className={styles.header}>
+        <div className={styles.header}>
           <div className={styles.titleWrapper}>
-            <h2 className={styles.title}>{t('skills.title')}</h2>
+            <h2 className={styles.title}>
+              {t('skills.title')}
+            </h2>
             <div className={styles.titleUnderline}></div>
           </div>
-          <p className={styles.description}>
+          <p className={styles.subtitle}>
             {t('skills.description')}
           </p>
-        </header>
+        </div>
 
-        <nav className={styles.categoryFilter}>
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`${styles.categoryButton} ${activeCategory === category.id ? styles.active : ''}`}
-            >
-              <span className={styles.categoryIcon}>{category.icon}</span>
-              <span className={styles.categoryText}>{category.name}</span>
-              <div className={styles.categoryGlow}></div>
-            </button>
-          ))}
-        </nav>
+        <div className={styles.categoriesGrid}>
+          {skillCategories.map((category, index) => (
+            <div key={category.id} className={styles.categoryWrapper}>
+              <div
+                className={`${styles.categoryCard} ${expandedCard === category.id ? styles.expanded : ''}`}
+                onClick={() => handleCardClick(category.id)}
+                style={{ '--category-color': category.color, '--delay': `${index * 0.2}s` } as React.CSSProperties}
+              >
+                <div className={styles.cardHeader}>
+                  <div 
+                    className={styles.iconWrapper}
+                    style={{ background: category.gradient }}
+                  >
+                    {category.icon}
+                  </div>
+                  <div className={styles.headerContent}>
+                    <h3 className={styles.categoryTitle}>{category.title}</h3>
+                    <p className={styles.categoryDescription}>{category.description}</p>
+                  </div>
+                  <ChevronRight 
+                    className={`${styles.expandIcon} ${expandedCard === category.id ? styles.rotated : ''}`}
+                    size={20}
+                  />
+                </div>
 
-        <div className={styles.skillsContainer}>
-          <div className={styles.skillsGrid}>
-            {filteredSkills.map((skill, index) => {
-              const iconUrl = getIconUrl(skill.icon);
-              return (
-                <div
-                  key={`${skill.name}-${skill.category}`}
-                  className={`${styles.skillCard} ${isVisible ? styles.visible : ''}`}
-                  style={{ '--index': index, '--skill-color': skill.color } as React.CSSProperties}
-                  onClick={() => handleSkillClick(skill.url)}
-                  title={`${skill.name} - ${skill.level}% proficiency`}
-                >
-                  <div className={styles.skillContent}>
-                    <div className={styles.skillIcon}>
-                      {iconUrl ? (
-                        <img 
-                          src={iconUrl} 
-                          alt={skill.name}
-                          style={{
-                            filter: getIconFilter(skill.icon)
-                          }}
-                        />
-                      ) : (
-                        <div className={styles.fallbackIcon}>
-                          {skill.name.substring(0, 2).toUpperCase()}
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className={styles.skillInfo}>
-                      <h3 className={styles.skillName}>{skill.name}</h3>
-                      <div className={styles.skillLevel}>
-                        <div className={styles.levelBar}>
-                          <div 
-                            className={styles.levelFill}
-                            style={{ '--level': `${skill.level}%` } as React.CSSProperties}
-                          ></div>
-                        </div>
-                        <span className={styles.levelText}>{skill.level}%</span>
+                {expandedCard === category.id && (
+                  <div className={styles.expandedContent}>
+                    <div className={styles.mainSkills}>
+                      <h4 className={styles.sectionTitle}>
+                        <Layers size={16} />
+                        {t('skills.mainSkills')}
+                      </h4>
+                      <div className={styles.skillsList}>
+                        {category.mainSkills.map((skill, skillIndex) => (
+                          <div key={skill.name} className={styles.skillItem}>
+                            <div className={styles.skillCard}>
+                              <div className={styles.skillLogo}>
+                                {skill.logo.startsWith('http') ? (
+                                  <img src={skill.logo} alt={skill.name} className={styles.logoImage} />
+                                ) : (
+                                  <div className={styles.iconContainer}>
+                                    {renderIcon(skill.logo)}
+                                  </div>
+                                )}
+                              </div>
+                              <span className={styles.skillName}>{skill.name}</span>
+                              <span className={`${styles.skillBadge} ${getBadgeClass(skill.level)}`}>
+                                {skill.level}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
+
+                    <button
+                      className={styles.viewAllButton}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleShowAllSkills(category.id);
+                      }}
+                    >
+                      <span>{t('skills.viewAll')}</span>
+                      <ArrowRight size={16} />
+                    </button>
                   </div>
-                  
-                  <div className={styles.skillGlow}></div>
-                </div>
-              );
-            })}
-          </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* Modal para todas as skills */}
+        {showAllSkills && (
+          <div className={styles.modal} onClick={handleCloseModal}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+              <div className={styles.modalHeader}>
+                <h3 className={styles.modalTitle}>
+                  {skillCategories.find(cat => cat.id === showAllSkills)?.title}
+                </h3>
+                <button className={styles.closeButton} onClick={handleCloseModal}>
+                  <X size={20} />
+                </button>
+              </div>
+              
+              <div className={styles.modalBody}>
+                <div className={styles.allSkillsGrid}>
+                  {skillCategories
+                    .find(cat => cat.id === showAllSkills)
+                    ?.allSkills.map((skill, index) => (
+                      <div key={skill.name} className={styles.modalSkillItem}>
+                        <div className={styles.modalSkillCard}>
+                          <div className={styles.skillLogo}>
+                            {skill.logo.startsWith('http') ? (
+                              <img src={skill.logo} alt={skill.name} className={styles.logoImage} />
+                            ) : (
+                              <div className={styles.iconContainer}>
+                                {renderIcon(skill.logo)}
+                              </div>
+                            )}
+                          </div>
+                          <span className={styles.modalSkillName}>{skill.name}</span>
+                          <span className={`${styles.skillBadge} ${getBadgeClass(skill.level)}`}>
+                            {skill.level}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

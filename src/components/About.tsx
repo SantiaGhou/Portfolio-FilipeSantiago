@@ -1,7 +1,30 @@
 import React from 'react';
 import { Code, Server, Globe, Award, Database, Smartphone } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useCountUp } from '../hooks/useCountUp'; 
 import styles from './About.module.css';
+
+// Componente para estatísticas animadas
+const AnimatedStat: React.FC<{ value: string; label: string }> = ({ value, label }) => {
+  // Extrair o número do valor (remove + e outros caracteres)
+  const numericValue = parseInt(value.replace(/\D/g, ''));
+  const { count, elementRef } = useCountUp(numericValue, { duration: 2000 });
+  
+  // Formatação do valor com o sufixo original
+  const formatValue = (num: number) => {
+    if (value.includes('+')) {
+      return `${num}+`;
+    }
+    return num.toString();
+  };
+
+  return (
+    <div className={styles.statCard} ref={elementRef}>
+      <span className={styles.statValue}>{formatValue(count)}</span>
+      <span className={styles.statLabel}>{label}</span>
+    </div>
+  );
+};
 
 const About: React.FC = () => {
   const { t } = useLanguage();
@@ -40,10 +63,10 @@ const About: React.FC = () => {
   ];
 
   const stats = [
-    { value: '4+', label: t('about.stats.experience') },
+    { value: '5+', label: t('about.stats.experience') },
     { value: '15+', label: t('about.stats.projects') },
     { value: '10+', label: t('about.stats.technologies') },
-    { value: '5+', label: t('about.stats.clients') }
+    { value: '24+', label: t('about.stats.clients') }
   ];
 
   const tags = ['Problem Solving', 'Clean Code', 'User Experience', 'Continuous Learning'];
@@ -89,10 +112,11 @@ const About: React.FC = () => {
           
           <div className={styles.statsGrid}>
             {stats.map((stat, index) => (
-              <div key={index} className={styles.statCard}>
-                <span className={styles.statValue}>{stat.value}</span>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
+              <AnimatedStat
+                key={index}
+                value={stat.value}
+                label={stat.label}
+              />
             ))}
           </div>
         </div>

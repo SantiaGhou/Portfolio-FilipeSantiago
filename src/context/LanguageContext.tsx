@@ -67,7 +67,7 @@ const translations = {
     
     // Skills
     'skills.title': 'Habilidades Técnicas',
-    'skills.description': 'Uma visão abrangente da minha expertise técnica em todo o espectro de desenvolvimento full stack, constantemente evoluindo com as últimas tendências e melhores práticas da indústria.',
+    'skills.description': 'Explore minhas competências organizadas por área de atuação, desde desenvolvimento frontend e backend até habilidades interpessoais essenciais para o trabalho em equipe.',
     'skills.frontend': 'Desenvolvimento Frontend',
     'skills.backend': 'Desenvolvimento Backend',
     'skills.database': 'Banco de Dados & DevOps',
@@ -100,7 +100,38 @@ const translations = {
     // Footer
     'footer.copyright': 'Todos os direitos reservados.',
     'footer.made': 'Feito com',
-    'footer.tech': 'e tecnologias web modernas'
+    'footer.tech': 'e tecnologias web modernas',
+    
+    // Skills - Categories
+    'skills.frontend.title': 'Desenvolvimento Frontend',
+    'skills.frontend.description': 'Criando interfaces modernas e responsivas com as melhores tecnologias',
+    'skills.backend.title': 'Desenvolvimento Backend', 
+    'skills.backend.description': 'Desenvolvendo APIs robustas e arquiteturas escaláveis',
+    'skills.softskills.title': 'Soft Skills',
+    'skills.softskills.description': 'Habilidades interpessoais e competências comportamentais',
+    
+    // Skills - Section titles
+    'skills.mainSkills': 'Principais Habilidades',
+    'skills.viewAll': 'Ver todas as habilidades',
+    
+    // Skills - Levels
+    'skills.level.iniciante': 'Iniciante',
+    'skills.level.intermediario': 'Intermediário', 
+    'skills.level.avancado': 'Avançado',
+    
+    // Skills - Soft Skills names
+    'skills.softskill.lideranca': 'Liderança',
+    'skills.softskill.comunicacao': 'Comunicação',
+    'skills.softskill.trabalhoEquipe': 'Trabalho em Equipe',
+    'skills.softskill.resolucaoProblemas': 'Resolução de Problemas',
+    'skills.softskill.pensamentoCritico': 'Pensamento Crítico',
+    'skills.softskill.adaptabilidade': 'Adaptabilidade',
+    'skills.softskill.gestaoTempo': 'Gestão de Tempo',
+    'skills.softskill.criatividade': 'Criatividade',
+    'skills.softskill.empatia': 'Empatia',
+    'skills.softskill.negociacao': 'Negociação',
+    'skills.softskill.mentoria': 'Mentoria',
+    'skills.softskill.apresentacao': 'Apresentação'
   },
   en: {
     // Navbar
@@ -146,7 +177,7 @@ const translations = {
     
     // Skills
     'skills.title': 'Technical Skills',
-    'skills.description': 'A comprehensive overview of my technical expertise across the full stack development spectrum, constantly evolving with the latest industry trends and best practices.',
+    'skills.description': 'Explore my competencies organized by area of expertise, from frontend and backend development to essential interpersonal skills for teamwork.',
     'skills.frontend': 'Frontend Development',
     'skills.backend': 'Backend Development',
     'skills.database': 'Database & DevOps',
@@ -179,7 +210,38 @@ const translations = {
     // Footer
     'footer.copyright': 'All rights reserved.',
     'footer.made': 'Made with',
-    'footer.tech': 'and modern web technologies'
+    'footer.tech': 'and modern web technologies',
+    
+    // Skills - Categories
+    'skills.frontend.title': 'Frontend Development',
+    'skills.frontend.description': 'Creating modern and responsive interfaces with the best technologies',
+    'skills.backend.title': 'Backend Development',
+    'skills.backend.description': 'Developing robust APIs and scalable architectures', 
+    'skills.softskills.title': 'Soft Skills',
+    'skills.softskills.description': 'Interpersonal skills and behavioral competencies',
+    
+    // Skills - Section titles
+    'skills.mainSkills': 'Main Skills',
+    'skills.viewAll': 'View all skills',
+    
+    // Skills - Levels
+    'skills.level.iniciante': 'Beginner',
+    'skills.level.intermediario': 'Intermediate',
+    'skills.level.avancado': 'Advanced',
+    
+    // Skills - Soft Skills names
+    'skills.softskill.lideranca': 'Leadership',
+    'skills.softskill.comunicacao': 'Communication',
+    'skills.softskill.trabalhoEquipe': 'Teamwork',
+    'skills.softskill.resolucaoProblemas': 'Problem Solving',
+    'skills.softskill.pensamentoCritico': 'Critical Thinking',
+    'skills.softskill.adaptabilidade': 'Adaptability',
+    'skills.softskill.gestaoTempo': 'Time Management',
+    'skills.softskill.criatividade': 'Creativity',
+    'skills.softskill.empatia': 'Empathy',
+    'skills.softskill.negociacao': 'Negotiation',
+    'skills.softskill.mentoria': 'Mentoring',
+    'skills.softskill.apresentacao': 'Presentation'
   }
 };
 

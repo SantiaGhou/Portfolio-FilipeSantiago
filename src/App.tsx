@@ -15,8 +15,8 @@ function App() {
       <main className={styles.main}>
         <Hero />
         <About />
-        <Skills />
         <Projects />
+        <Skills />
         <Contact />
       </main>
       <Footer />
