@@ -74,7 +74,7 @@ export const projects: Project[] = [
     image: '/projects/Be2B_Kids.png',
     tags: ['ReactJs', 'TypeScript', 'TailwindCSS'],
     githubUrl: '',
-    liveUrl: '',
+    liveUrl: 'https://be2b-kids.netlify.app/',
     category: 'frontend'
   },
   { 
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     data: '2024',
     image: '/projects/SnitapPatins.png',
     tags: ['HTML','CSS','JavaScript'],
-    githubUrl: '',
+    githubUrl: 'https://github.com/SantiaGhou/Snitap-Patins-LP-',
     liveUrl: '',
     category: 'frontend'
   },
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     data: '2024',
     image: '/projects/Numbers.png',
     tags: ['HTML','CSS','JavaScript'],
-    githubUrl: '',
+    githubUrl: 'https://github.com/SantiaGhou/Numbers',
     liveUrl: '',
     category: 'frontend'
   },      { 
@@ -126,8 +126,8 @@ export const projects: Project[] = [
     description: 'Projeto desenvolvido como parte do nlw Da Rocketseat, onde foi criado um rastreador de hábitos e resolvi ir alem adicionando uma analise de evolução com I.a Que analiza os habitos e retorna um feedback de como melhorar o desempenho de habitos não concluidos',
     data: '2024',
     image: '/projects/habits.png',
-    tags: ['Typescript','React','TailwindCSS','Css Modules'],
-    githubUrl: '',
+    tags: ['Typescript','React','TailwindCSS'],
+    githubUrl: 'https://github.com/SantiaGhou/Habits',
     liveUrl: '',
     category: 'fullstack'
   },
