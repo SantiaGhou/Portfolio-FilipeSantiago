@@ -38,13 +38,13 @@ const translations = {
     'hero.badge': 'Desenvolvedor Fullstack',
     'hero.title': 'Eai beleza 👋 me chamo',
     'hero.name': 'Filipe Santiago',
-    'hero.description': 'Desenvolvedor em formação, com entusiasmo genuíno por tecnologia e direcionamento estratégico voltado à consolidação de uma trajetória de excelência e referência no setor.',
+    'hero.description': 'Desenvolvedor, com entusiasmo genuíno por tecnologia e direcionamento estratégico voltado à consolidação de uma trajetória de excelência e referência no setor.',
     'hero.getInTouch': 'Entre em contato',
     'hero.viewWork': 'Ver meu trabalho',
     
     // About
     'about.title': 'Sobre Mim',
-    'about.description': 'Profissional em formação na área de Desenvolvimento de Software, com forte interesse em tecnologia e inovação. Atualmente cursando Bacharelado em Ciência da Computação, dedicando-me à construção de uma base técnica sólida em estruturas de dados, algoritmos e engenharia de software. Foco no aprimoramento contínuo de habilidades práticas e teóricas com o objetivo de atuar de forma estratégica no desenvolvimento de soluções eficientes e escaláveis, visando me tornar uma referência no setor.',
+    'about.description': 'Profissional na área de Desenvolvimento de Software, com forte interesse em tecnologia e inovação. Atualmente cursando Bacharelado em Ciência da Computação, dedicando-me à construção de uma base técnica sólida em estruturas de dados, algoritmos e engenharia de software. Foco no aprimoramento contínuo de habilidades práticas e teóricas com o objetivo de atuar de forma estratégica no desenvolvimento de soluções eficientes e escaláveis, visando me tornar uma referência no setor.',
     'about.frontend.title': 'Desenvolvimento Frontend',
     'about.frontend.description': 'Criando interfaces de usuário responsivas e interativas com frameworks e bibliotecas modernas.',
     'about.backend.title': 'Desenvolvimento Backend',
